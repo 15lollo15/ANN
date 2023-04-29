@@ -8,7 +8,6 @@ import java.util.List;
 public class MultiLayerPerceptron {
     private List<Layer> layers;
     private int numInput;
-
     public MultiLayerPerceptron(Layer inputLayer) {
         this.numInput = inputLayer.getNumInput();
         this.layers = new ArrayList<>();
@@ -22,14 +21,14 @@ public class MultiLayerPerceptron {
     public void addLayer(Layer layer) {
         Layer lastAddedLayer = getOutputLayer();
 
-        if (layer.getNumInput() != lastAddedLayer.getNeuronNumber())
+        if (layer.getNumInput() != lastAddedLayer.getNumNeuron())
             throw new RuntimeException("...");
 
         layers.add(layer);
     }
 
     public int getNumOutput() {
-        return getOutputLayer().getNeuronNumber();
+        return getOutputLayer().getNumNeuron();
     }
 
     private SimpleMatrix predict(SimpleMatrix x, List<SimpleMatrix> d) {
